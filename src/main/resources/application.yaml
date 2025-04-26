@@ -5,5 +5,18 @@ spring:
     password: mypassword
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
+
+  graphql:
+    path: /graphql
+    graphiql:
+      enabled: true
+      path: /graphiql # ex: http://localhost:8080/graphiql?path=/graphql
+
+# MongoDB configuration
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: local

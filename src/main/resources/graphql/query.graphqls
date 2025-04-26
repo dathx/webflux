@@ -1,0 +1,11 @@
+type Query {
+    findAccountById(accountId: String): Account
+    fetchAllAccount: [Account]
+
+}
+type  Account {
+    accountId: String
+    name: String
+    age: String
+    email: String
+}
