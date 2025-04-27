@@ -36,7 +36,7 @@ public class AccountGraphQLController {
     }
 
     @MutationMapping
-    public Mono<AccountResponse> updateAccount(@Argument Account account) {
+    public Mono<AccountResponse> updateAccount(@Argument Account account, @Argument String accountId) {
         return accountService.updateAccount(account).log()
                 .map(accountService::getAccountResponse).onErrorResume(ex -> Mono.empty());
     }

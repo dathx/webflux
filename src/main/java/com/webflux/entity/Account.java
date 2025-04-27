@@ -4,19 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table("Account")
-public class Account implements Persistable<String> {
+@Table("account")
+public class Account {
 
     @Id
-    @Column("accountId")
+    @Column("id")
+    private Long id;
+
+    @Column("account_id")
     private String accountId;
 
     @Column("name")
@@ -27,21 +28,4 @@ public class Account implements Persistable<String> {
 
     @Column("email")
     private String email;
-
-    @Transient
-    private boolean isNew = true;
-
-    @Override
-    public String getId() {
-        return accountId;
-    }
-
-    @Override
-    public boolean isNew() {
-        return isNew;
-    }
-
-    public void setNew(boolean aNew) {
-        this.isNew = aNew;
-    }
 }

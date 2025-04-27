@@ -19,7 +19,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Mono<Account> findAccountById(String accountId) {
-        return accountRepository.findById(accountId);
+        return accountRepository.findAccountByAccountId(accountId);
     }
 
     @Override
@@ -36,23 +36,21 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Mono<Account> createAccount(Account account) {
-        account.setNew(true);
         return accountRepository.save(account);
     }
 
 
     @Override
     public Mono<Account> updateAccount(Account account) {
-        return accountRepository.findById(account.getAccountId())
+        return accountRepository.findAccountByAccountId(account.getAccountId())
                 .flatMap(existingAccount -> {
                     existingAccount.setName(account.getName());
-                    existingAccount.setAge(account.getAge());
                     return accountRepository.save(existingAccount);
                 });
     }
 
     @Override
     public Mono<Void> deleteAccount(String accountId) {
-        return accountRepository.deleteById(accountId);
+        return accountRepository.deleteByAccountId(accountId);
     }
 }
