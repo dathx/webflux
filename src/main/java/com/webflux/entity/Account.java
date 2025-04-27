@@ -14,7 +14,8 @@ import org.springframework.validation.annotation.Validated;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document
+@Table("Account")
+//@Document
 public class Account implements Persistable<String> {
 
     @Id
