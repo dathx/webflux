@@ -16,7 +16,6 @@ import reactor.core.publisher.Mono;
 public class AccountRestController {
 
     private final AccountService accountService;
-    private final ObjectMapper objectMapper;
 
 
     @GetMapping(value = "/account/{accountId}", produces = MediaType.APPLICATION_JSON_VALUE)
